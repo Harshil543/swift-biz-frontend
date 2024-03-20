@@ -1,4 +1,4 @@
-import React from "react";
+import { data } from "../../constant/works";
 
 export default function Steps() {
   return (
@@ -6,11 +6,10 @@ export default function Steps() {
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
-            How does it work?
+            {data.heading}
           </h2>
           <p className="max-w-lg mx-auto mt-4 text-base leading-relaxed text-gray-600">
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis.
+            {data.subHeading}
           </p>
         </div>
 
@@ -24,44 +23,21 @@ export default function Steps() {
           </div>
 
           <div className="relative grid grid-cols-1 text-center gap-y-12 md:grid-cols-3 gap-x-12">
-            <div>
-              <div className="flex items-center justify-center w-16 h-16 mx-auto bg-white border-2 border-gray-200 rounded-full shadow">
-                <span className="text-xl font-semibold text-gray-700"> 1 </span>
+            {data.data.map((work: any) => (
+              <div key={work.id}>
+                <div className="flex items-center justify-center w-16 h-16 mx-auto bg-white border-2 border-gray-200 rounded-full shadow">
+                  <span className="text-xl font-semibold text-gray-700">
+                    {work.id}
+                  </span>
+                </div>
+                <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">
+                  {work.title}
+                </h3>
+                <p className="mt-4 text-base text-gray-600">
+                  {work.description}
+                </p>
               </div>
-              <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">
-                Create a free account
-              </h3>
-              <p className="mt-4 text-base text-gray-600">
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                amet sint. Velit officia consequat duis enim velit mollit.
-              </p>
-            </div>
-
-            <div>
-              <div className="flex items-center justify-center w-16 h-16 mx-auto bg-white border-2 border-gray-200 rounded-full shadow">
-                <span className="text-xl font-semibold text-gray-700"> 2 </span>
-              </div>
-              <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">
-                Build your website
-              </h3>
-              <p className="mt-4 text-base text-gray-600">
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                amet sint. Velit officia consequat duis enim velit mollit.
-              </p>
-            </div>
-
-            <div>
-              <div className="flex items-center justify-center w-16 h-16 mx-auto bg-white border-2 border-gray-200 rounded-full shadow">
-                <span className="text-xl font-semibold text-gray-700"> 3 </span>
-              </div>
-              <h3 className="mt-6 text-xl font-semibold leading-tight text-black md:mt-10">
-                Release & Launch
-              </h3>
-              <p className="mt-4 text-base text-gray-600">
-                Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-                amet sint. Velit officia consequat duis enim velit mollit.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </div>

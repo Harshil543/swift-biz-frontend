@@ -1,158 +1,22 @@
 import React from "react";
+import { data } from "../../constant/features";
 
 export default function Section() {
   return (
     <>
-      {/* <div>
-        <div className="container flex flex-col px-[150px] py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center">
-          <div className="flex items-center justify-center w-full h-96 lg:w-1/2">
-            <img
-              src="https://img.freepik.com/free-vector/analysis-concept-illustration_114360-1147.jpg?t=st=1710933518~exp=1710937118~hmac=ee2b3af67e1218ec965874157c211280c4ccf4043b35473b8d429f5ec7009c83&w=740"
-              className="object-cover w-full h-full max-w-2xl rounded-md"
-              alt="glasses photo"
-            />
-          </div>
-          <div className="w-full ml-20 lg:w-1/2">
-            <div className="lg:max-w-lg">
-              <h1 className="text-3xl font-semibold tracking-wide text-gray-800  lg:text-4xl">
-                Streamline Connections Simplify Business Cards!
-              </h1>
-              <p className="mt-4 text-gray-600">
-                Discover Seamless Networking: Elevate Your Experience with
-                Streamlined Business Connections!
-              </p>
-              <div className="grid gap-6 mt-8 sm:grid-cols-2">
-                <div className="flex items-center text-gray-800 -px-3 ">
-                  <svg
-                    className="w-5 h-5 mx-3"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-
-                  <span className="mx-3">Premium selection</span>
-                </div>
-
-                <div className="flex items-center text-gray-800 -px-3 ">
-                  <svg
-                    className="w-5 h-5 mx-3"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-
-                  <span className="mx-3">Insurance</span>
-                </div>
-
-                <div className="flex items-center text-gray-800 -px-3 ">
-                  <svg
-                    className="w-5 h-5 mx-3"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-
-                  <span className="mx-3">All legal documents</span>
-                </div>
-
-                <div className="flex items-center text-gray-800 -px-3 ">
-                  <svg
-                    className="w-5 h-5 mx-3"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-
-                  <span className="mx-3">From US glasses dealers</span>
-                </div>
-
-                <div className="flex items-center text-gray-800 -px-3 ">
-                  <svg
-                    className="w-5 h-5 mx-3"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-
-                  <span className="mx-3">Payment Security</span>
-                </div>
-
-                <div className="flex items-center text-gray-800 -px-3 ">
-                  <svg
-                    className="w-5 h-5 mx-3"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-
-                  <span className="mx-3">Fast shipping (+ Express)</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
       <section className="py-12 bg-white sm:py-16 lg:py-20">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl xl:text-5xl font-pj">
-              Make every step user-centric
+              {data.heading}
             </h2>
             <p className="mt-4 text-base leading-7 text-gray-600 sm:mt-8 font-pj">
-              Lorem ipsum dolor sit amet, consectetur adipis elit
+              {data.subHeading}
             </p>
           </div>
 
           <div className="grid grid-cols-1 mt-10 text-center sm:mt-16 sm:grid-cols-2 sm:gap-x-12 gap-y-12 md:grid-cols-3 md:gap-0 xl:mt-24">
-            <div className="md:p-8 lg:p-14">
+            {/* <div className="md:p-8 lg:p-14">
               <svg
                 className="mx-auto"
                 width="46"
@@ -399,43 +263,19 @@ export default function Section() {
                 Lorem ipsum dolor sit amet, consectetur adipis elit. Sit enim
                 nec, proin faucibus nibh et sagittis a. Lacinia purus ac amet.
               </p>
-            </div>
+            </div> */}
 
-            <div className="md:p-8 lg:p-14 md:border-l md:border-gray-200 md:border-t">
-              <svg
-                className="mx-auto"
-                width="44"
-                height="44"
-                viewBox="0 0 44 44"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M25 7C34.941 7 43 15.059 43 25C43 34.941 34.941 43 25 43C15.059 43 7 34.941 7 25"
-                  stroke="#161616"
-                  stroke-width="2"
-                  stroke-miterlimit="10"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M19 1C9.059 1 1 9.059 1 19H19V1Z"
-                  fill="#D4D4D8"
-                  stroke="#161616"
-                  stroke-width="2"
-                  stroke-miterlimit="10"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <h3 className="mt-12 text-xl font-bold text-gray-900 font-pj">
-                Result
-              </h3>
-              <p className="mt-5 text-base text-gray-600 font-pj">
-                Lorem ipsum dolor sit amet, consectetur adipis elit. Sit enim
-                nec, proin faucibus nibh et sagittis a. Lacinia purus ac amet.
-              </p>
-            </div>
+            {data.data.map((feat: any) => (
+              <div className="md:p-8 lg:p-14 md:border-l md:border-gray-200 ">
+                <img className="mx-auto" src="/images/headphone.svg" alt="" />
+                <h3 className="mt-12 text-xl font-bold text-gray-900 font-pj">
+                  {feat.title}
+                </h3>
+                <p className="mt-5 text-base text-gray-600 font-pj">
+                  {feat.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
