@@ -1,0 +1,17 @@
+.issticky {
+  position: fixed;
+  // backdrop-filter: blur(20px);
+  background-color: #fff;
+  z-index: 1000;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.35s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
