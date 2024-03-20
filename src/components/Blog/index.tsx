@@ -19,7 +19,7 @@ export default function Blog() {
         <div className="grid  grid-cols-1 mx-auto mt-8 text-center sm:mt-16 sm:text-left sm:grid-cols-3 gap-y-8 gap-x-8 lg:gap-x-20">
           {data?.map((blog: any) => (
             <div key={blog.id} className="relative group">
-              <div className="absolute -inset-x-1 inset-y-16 md:-inset-x-2 md:-inset-y-6">
+              {/* <div className="absolute -inset-x-1 inset-y-16 md:-inset-x-2 md:-inset-y-6">
                 <div
                   className="w-full h-full max-w-5xl mx-auto rounded-3xl opacity-25 blur-lg filter"
                   style={{
@@ -27,7 +27,7 @@ export default function Blog() {
                       "linear-gradient(90deg, #44ff9a -0.55%, #44b0ff 22.86%, #8b44ff 48.36%, #ff6644 73.33%, #ebff70 99.34%)"
                   }}
                 ></div>
-              </div>
+              </div> */}
               <div className="overflow-hidden rounded-lg  aspect-w-16 aspect-h-9">
                 <img
                   className="object-cover w-full h-full transition-all duration-300 transform group-hover:scale-125"
