@@ -20,12 +20,12 @@ export default function Header() {
     <header>
       <div className="px-4 mx-auto sm:px-6 lg:px-8 ">
         <div
-          className={`flex absolute w-[100%] right-0 items-center justify-between h-16 lg:h-20 ${
+          className={`z-[100] flex absolute w-[100%] right-0 items-center justify-between h-16 lg:h-20 ${
             isSticky ? styles.issticky : ""
           }`}
         >
           <div className="flex-shrink-0">
-            <Link to="/" className="flex">
+            <Link to="/login" className="flex">
               <img className="w-auto h-8 ml-10" src="" alt="logo" />
             </Link>
           </div>
@@ -89,18 +89,17 @@ export default function Header() {
               Pricing
             </Link>
             <div className="w-px h-5 bg-black/20"></div>
-            <Link
+            {/* <Link
               to="/login"
               className="text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
             >
               Log in
-            </Link>
+            </Link> */}
             <Link
-              to="/signup"
-              className="inline-flex items-center justify-center px-5 py-1.5 text-base font-semibold text-white bg-black border-2 border-black hover:opacity-0.5  transition-all duration-200 rounded-xl"
-              role="button"
+              to="/login"
+              className="inline-flex items-center justify-center px-5 py-1.5 text-base font-semibold text-white bg-[#037cff] border-2 bg-[#037cff] hover:opacity-0.5  transition-all duration-200 rounded-xl"
             >
-              Sign up
+              Log in
             </Link>
           </div>
         </div>

@@ -1,22 +1,15 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Blog from "./components/Blog";
-import Footer from "./components/footer";
-import Header from "./components/header/header";
-import Hero from "./components/hero";
-import Section from "./components/section1/section";
-import Steps from "./components/steps";
-import Testimonial from "./components/testimonials";
+import LeadingPage from "./components/landing-page";
+import LogIn from "./components/login";
 
 function App() {
   return (
     <>
-      <Header />
-      <Hero />
-      <Steps />
-      <Section />
-      <Testimonial />
-      <Blog />
-      <Footer />
+      <Routes>
+        <Route path="/" element={<LeadingPage />} />
+        <Route path="/login" element={<LogIn />} />
+      </Routes>
     </>
   );
 }
