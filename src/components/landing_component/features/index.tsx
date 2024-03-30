@@ -1,5 +1,5 @@
 import React from "react";
-import { data } from "../../constant/features";
+import { data } from "../../../constant/features";
 
 export default function Section() {
   return (

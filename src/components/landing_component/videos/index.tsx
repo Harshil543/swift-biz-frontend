@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { data } from "../../constant/blog";
+import { data } from "../../../constant/blog";
 
 export default function Videos() {
   return (

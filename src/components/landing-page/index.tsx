@@ -1,11 +1,11 @@
-import Blog from "../Blog";
-import Footer from "../footer";
-import Header from "../header/header";
-import Hero from "../hero";
-import Section from "../section1/section";
-import Steps from "../steps";
-import Testimonial from "../testimonials";
-import Videos from "../videos";
+import Blog from "../landing_component/Blog";
+import Footer from "../landing_component/footer";
+import Header from "../landing_component/header";
+import Hero from "../landing_component/hero";
+import Section from "../landing_component/features";
+import Steps from "../landing_component/steps";
+import Testimonial from "../landing_component/testimonials";
+import Videos from "../landing_component/videos";
 export default function LeadingPage() {
   return (
     <>

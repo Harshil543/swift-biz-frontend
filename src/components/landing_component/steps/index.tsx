@@ -1,4 +1,4 @@
-import { data } from "../../constant/works";
+import { data } from "../../../constant/works";
 
 export default function Steps() {
   return (
