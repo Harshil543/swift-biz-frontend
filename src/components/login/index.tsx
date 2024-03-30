@@ -61,7 +61,7 @@ export default function LogIn() {
     <div className="flex h-screen">
       <div className="w-full bg-white lg:w-1/2 flex items-center justify-center">
         <div className="max-w-md w-full p-6">
-          <Logo height="25" margin="auto" />
+          <Logo height="7rem" margin="auto" />
           <h1 className="text-3xl font-semibold mb-6 text-black text-center">
             Welcome back!
           </h1>
