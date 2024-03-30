@@ -27,7 +27,7 @@ export default function Header() {
             isSticky ? styles.issticky : ""
           }`}
         >
-          <Logo marginLeft="2.5rem" height="80px" />
+          <Logo marginLeft="40px" height="80px" />
           <button
             type="button"
             className="inline-flex p-1 mr-10 text-black transition-all duration-200 lg:hidden focus:bg-gray-100 hover:bg-gray-100"
