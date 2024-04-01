@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 export default function Logo(props: any) {
   const logoStyle = {
     height: props.height,
-    marginLeft: props.marginLeft ? `${props.marginLeft}` : "0",
     margin: props.margin ? `${props.margin}` : "0"
   };
   return (

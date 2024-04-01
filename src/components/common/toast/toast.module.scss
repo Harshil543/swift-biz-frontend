@@ -1,0 +1,10 @@
+.toastMessage {
+  [class~='p-toast-message'] [class~='p-toast-message-content'] {
+    padding: 0.9375rem;
+    [class~='p-toast-message-icon'][class~='p-icon'] {
+      margin-right: 0.3125rem;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}

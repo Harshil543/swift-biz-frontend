@@ -10,12 +10,14 @@ export default function Input(props: any) {
         </label>
       )}
       <input
+        value={props.value}
         onChange={props.onChange}
         placeholder={props.placeholder}
         type={props.type}
         onBlur={props.onBlur}
         id={props.name}
         name={props.name}
+        autoFocus={props.autoFocus}
         className="my-2 p-2 w-full border border-[#037cff] rounded-md focus:border-[#52a6ff] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#52a6ff] transition-colors duration-300"
       />
       {props.touched && props.isError && (

@@ -2,12 +2,18 @@ import { useFormik } from "formik";
 import Button from "../common/button";
 import Input from "../common/input";
 import Logo from "../common/logo";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
+import { useToast } from "../common/toast/toast";
+import { UserContext } from "../context";
+import { useNavigate } from "react-router-dom";
 
 export default function LogIn() {
   const [loading, setLoading] = useState<boolean>(false);
-
+  const { showError, showSuccess }: any = useToast();
+  const { user, setUser }: any = useContext(UserContext);
+  console.log(user, "setUser");
+  const navigate = useNavigate();
   const validate = (values: any) => {
     const errors: any = {};
     if (!values.email) {
@@ -50,6 +56,17 @@ export default function LogIn() {
         })
         .then((response) => {
           console.log(JSON.stringify(response.data));
+          if (response.data.status === 200) {
+            showSuccess("Success", response.data.message);
+            console.log(response.data.data, "response.data.data");
+            setUser(response.data.data);
+            localStorage.setItem("user", JSON.stringify(response.data.data));
+            navigate("/cards-list");
+          } else {
+            showError("Error", response.data.message);
+          }
+          formik.resetForm();
+          setLoading(false);
         })
         .catch((error) => {
           console.log(error);
@@ -75,11 +92,13 @@ export default function LogIn() {
               name="email"
               id="email"
               type="text"
+              value={formik.values.email}
               isError={!!formik.errors.email}
               onBlur={formik.handleBlur}
               errorMessage={formik.errors.email}
               onChange={(e: any) => formik.handleChange(e)}
               touched={formik.touched.email}
+              autoFocus={true}
             />
             <Input
               placeholder="Enter your password"
@@ -87,6 +106,7 @@ export default function LogIn() {
               name="password"
               id="password"
               isError={!!formik.errors.password}
+              value={formik.values.password}
               onBlur={formik.handleBlur}
               errorMessage={formik.errors.password}
               type="password"
@@ -94,7 +114,12 @@ export default function LogIn() {
               touched={formik.touched.password}
               disabled={loading}
             />
-            <Button label="Log in" type="submit" disabled={loading} />
+            <Button
+              label="Log in"
+              type="submit"
+              disabled={loading}
+              loading={loading}
+            />
           </form>
         </div>
       </div>
