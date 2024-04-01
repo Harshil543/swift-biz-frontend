@@ -7,7 +7,7 @@ import { UserContext } from "../../context";
 export default function Header() {
   const [isSticky, setIsSticky] = useState(false);
   const navigate = useNavigate();
-  const { user }: any = useContext(UserContext);
+  const { user, logOut }: any = useContext(UserContext);
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.pageYOffset;
@@ -21,9 +21,8 @@ export default function Header() {
   }, []);
 
   const Logout = () => {
-    console.log("login");
+    logOut();
     navigate("/");
-    localStorage.clear();
   };
 
   return (

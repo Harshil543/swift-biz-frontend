@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Card from "../common/card";
 import Header from "../landing_component/header";
 import axios from "axios";
+import { UserContext } from "../context";
 
 export default function CardList() {
   const [cardList, setCardList] = useState<any>([]);
+  const { user }: any = useContext(UserContext);
   useEffect(() => {
     axios
       .request({
         method: "get",
-        url: `${process.env.REACT_APP_BASE_URL}/api/cards/1`,
+        url: `${process.env.REACT_APP_BASE_URL}/api/cards/${user.id}`,
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzExOTExMzcyLCJleHAiOjE3MTE5OTc3NzJ9.El49zhHbifIbGy4-_GrTgRC8jsGULA5sjDzcuZ3n4Ls"
+          Authorization: `Bearer ${user.accessToken}`
         }
       })
       .then((response) => {
@@ -30,13 +31,15 @@ export default function CardList() {
   }, []);
 
   return (
-    <div className="bg-gray-100">
-      <Header />
-      <div className="bg-[#fff] p-10 py-[120px] sm:py-[150px] lg:py-[120px]">
-        {cardList.map((card: any) => (
-          <Card />
-        ))}
+    <>
+      <div className="bg-gray-100">
+        <Header />
+        <div className="bg-[#fff] p-10 py-[120px] sm:py-[150px] lg:py-[120px]">
+          {cardList.map((card: any) => (
+            <Card />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
