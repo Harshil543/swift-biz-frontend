@@ -8,12 +8,12 @@ import { UserContext } from "./components/context";
 
 function App() {
   function PrivateRoute({ children }: any) {
-    const { user } = useContext(UserContext);
+    const { user }: any = useContext(UserContext);
     return user?.id && user?.accessToken ? children : <Navigate to="/login" />;
   }
 
   function ProtectedRoute({ children }: any) {
-    const { user } = useContext(UserContext);
+    const { user }: any = useContext(UserContext);
     return user?.id && user?.accessToken ? (
       <Navigate to="/cards-list" />
     ) : (
