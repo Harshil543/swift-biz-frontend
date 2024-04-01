@@ -9,7 +9,7 @@ import Videos from "../landing_component/videos";
 export default function LeadingPage() {
   return (
     <>
-      <Header />
+      <Header isLanding={true}/>
       <Hero />
       <Steps />
       <Section />

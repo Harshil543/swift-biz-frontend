@@ -4,7 +4,8 @@ import { useContext, useEffect, useState } from "react";
 import Logo from "../../common/logo";
 import Button from "../../common/button";
 import { UserContext } from "../../context";
-export default function Header() {
+
+export default function Header({ isLanding }: any) {
   const [isSticky, setIsSticky] = useState(false);
   const navigate = useNavigate();
   const { user, logOut }: any = useContext(UserContext);
@@ -36,7 +37,8 @@ export default function Header() {
           <div className="ml-10">
             <Logo marginLeft="40px" height="80px" />
           </div>
-          {!user?.id ? (
+
+          {isLanding && (
             <>
               <button
                 type="button"
@@ -75,14 +77,17 @@ export default function Header() {
                   Pricing
                 </Link>
                 <div className="w-px h-5 bg-black/20"></div>
-                <Button label="Log in" onClick={() => navigate("/login")} />
               </div>
             </>
-          ) : (
-            <div className="mr-10 ml-auto lg:flex lg:items-center lg:justify-center lg:space-x-10">
-              <Button label="Log out" onClick={() => Logout()} />
-            </div>
           )}
+
+          <div className="mr-10 lg:space-x-10">
+            {!user?.id ? (
+              <Button label="Log in" onClick={() => navigate("/login")} />
+            ) : (
+              <Button label="Log out" onClick={() => Logout()} />
+            )}
+          </div>
         </div>
       </div>
     </header>
