@@ -12,13 +12,13 @@ export default function LogIn() {
   const [loading, setLoading] = useState<boolean>(false);
   const { showError, showSuccess }: any = useToast();
   const { user, setUser }: any = useContext(UserContext);
-  console.log(user, "setUser");
   const navigate = useNavigate();
   const validate = (values: any) => {
     const errors: any = {};
     if (!values.email) {
       errors.email = "Email is required";
     } else if (
+      // eslint-disable-next-line
       !/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
         values.email
       )
@@ -55,10 +55,8 @@ export default function LogIn() {
           data: payload
         })
         .then((response) => {
-          console.log(JSON.stringify(response.data));
           if (response.data.status === 200) {
             showSuccess("Success", response.data.message);
-            console.log(response.data.data, "response.data.data");
             setUser(response.data.data);
             localStorage.setItem("user", JSON.stringify(response.data.data));
             navigate("/cards-list");

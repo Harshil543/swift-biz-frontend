@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Card() {
+export default function Card({ name, jobTitle, image }: any) {
   const style = {
     background: "rgba(255, 255, 255, 0.53)",
     borderRadius: "16px",
@@ -10,23 +10,16 @@ export default function Card() {
   };
 
   return (
-    <div
-      style={style}
-      className="flex flex-col rounded-lg md:max-w-xl md:flex-row"
-    >
+    <div style={style} className="flex flex-col rounded-lg md:flex-row">
       <img
-        className="w-full rounded-t-lg object-cover md:h-auto md:w-48 md:!rounded-none md:!rounded-s-lg"
-        src="https://atfxlambprrpulkkghjt.supabase.co/storage/v1/object/public/card-images/images/1710420671125-4373272_atlassian_logo_logos_icon.png"
+        className="w-full h-[128px] rounded-lg object-cover md:w-[224px] md:h-[128px] md:rounded-l-lg"
+        src={`${image}`}
         alt=""
       />
-      <div className="flex flex-col justify-start p-6">
-        <h5 className="mb-2 text-xl font-medium">Name please</h5>
-        <p className="mb-4 text-base">
-          This is a wider card with supporting text below as a natural lead-in
-          to additional content. This content is a little bit longer.
-        </p>
-        <p className="text-xs text-surface/75 dark:text-neutral-300">
-          Last updated 3 mins ago
+      <div className="flex flex-col justify-start p-4 md:p-6">
+        <h5 className="mb-2 text-lg md:text-xl font-medium">{name}</h5>
+        <p className="text-xs md:text-sm text-surface/75 dark:text-grey-100">
+          {jobTitle}
         </p>
       </div>
     </div>

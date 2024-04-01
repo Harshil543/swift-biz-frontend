@@ -36,45 +36,48 @@ export default function Header() {
           <div className="ml-10">
             <Logo marginLeft="40px" height="80px" />
           </div>
-          <button
-            type="button"
-            className="inline-flex p-1 mr-10 text-black transition-all duration-200 lg:hidden focus:bg-gray-100 hover:bg-gray-100"
-          >
-            <img
-              className="block w-6 h-6"
-              src="/images/lines.svg"
-              alt="lines"
-            />
-          </button>
           {!user?.id ? (
-            <div className="hidden mr-10 ml-auto lg:flex lg:items-center lg:justify-center lg:space-x-10">
-              <Link
-                to="#"
-                className="text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
+            <>
+              <button
+                type="button"
+                className="inline-flex p-1 mr-10 text-black transition-all duration-200 lg:hidden focus:bg-gray-100 hover:bg-gray-100"
               >
-                Features
-              </Link>
-              <Link
-                to="#"
-                className="text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
-              >
-                Solutions
-              </Link>
-              <Link
-                to="#"
-                className="text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
-              >
-                Resources
-              </Link>
-              <Link
-                to="#"
-                className="text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
-              >
-                Pricing
-              </Link>
-              <div className="w-px h-5 bg-black/20"></div>
-              <Button label="Log in" onClick={() => navigate("/login")} />
-            </div>
+                <img
+                  className="block w-6 h-6"
+                  src="/images/lines.svg"
+                  alt="lines"
+                />
+              </button>
+
+              <div className="hidden mr-10 ml-auto lg:flex lg:items-center lg:justify-center lg:space-x-10">
+                <Link
+                  to="#"
+                  className="text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
+                >
+                  Features
+                </Link>
+                <Link
+                  to="#"
+                  className="text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
+                >
+                  Solutions
+                </Link>
+                <Link
+                  to="#"
+                  className="text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
+                >
+                  Resources
+                </Link>
+                <Link
+                  to="#"
+                  className="text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
+                >
+                  Pricing
+                </Link>
+                <div className="w-px h-5 bg-black/20"></div>
+                <Button label="Log in" onClick={() => navigate("/login")} />
+              </div>
+            </>
           ) : (
             <div className="mr-10 ml-auto lg:flex lg:items-center lg:justify-center lg:space-x-10">
               <Button label="Log out" onClick={() => Logout()} />
