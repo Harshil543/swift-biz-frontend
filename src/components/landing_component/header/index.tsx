@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import Logo from "../../common/logo";
 import Button from "../../common/button";
 import { UserContext } from "../../context";
+// import { Avatar } from "primereact/avatar";
 
 export default function Header({ isLanding }: any) {
   const [isSticky, setIsSticky] = useState(false);
@@ -71,10 +72,10 @@ export default function Header({ isLanding }: any) {
                   Resources
                 </Link>
                 <Link
-                  to="#"
+                  to="/cards-list"
                   className="text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
                 >
-                  Pricing
+                  Dashboard
                 </Link>
                 <div className="w-px h-5 bg-black/20"></div>
               </div>
@@ -85,7 +86,16 @@ export default function Header({ isLanding }: any) {
             {!user?.id ? (
               <Button label="Log in" onClick={() => navigate("/login")} />
             ) : (
-              <Button label="Log out" onClick={() => Logout()} />
+              <div className="flex">
+                {/* <Avatar
+                  label="P"
+                  image={`/images/avatar/${user.image_url}`}
+                  className="bg-[#037cff] text-white m-4"
+                  shape="circle"
+                  size="large"
+                /> */}
+                <Button label="Log out" onClick={() => Logout()} />
+              </div>
             )}
           </div>
         </div>

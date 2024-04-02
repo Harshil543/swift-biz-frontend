@@ -5,9 +5,13 @@ import LogIn from "./components/login";
 import CardList from "./components/cardslist";
 import { useContext } from "react";
 import { UserContext } from "./components/context";
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+import CardDetails from "./components/common/card-details";
+import "primeicons/primeicons.css";
 
 function App() {
   function PrivateRoute({ children }: any) {
+    debugger;
     const { user }: any = useContext(UserContext);
     return user?.id && user?.accessToken ? children : <Navigate to="/login" />;
   }
@@ -38,6 +42,14 @@ function App() {
             <PrivateRoute>
               <CardList />
             </PrivateRoute>
+          }
+        />
+        <Route
+          path="/cards-details"
+          element={
+            // <PrivateRoute>
+            <CardDetails />
+            // </PrivateRoute>
           }
         />
       </Routes>
