@@ -2,16 +2,17 @@ import { useFormik } from "formik";
 import Button from "../common/button";
 import Input from "../common/input";
 import Logo from "../common/logo";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useToast } from "../common/toast/toast";
-import { UserContext } from "../context";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "../../redux/Auth/authReducer";
 
 export default function LogIn() {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<any>(false);
   const { showError, showSuccess }: any = useToast();
-  const { user, setUser }: any = useContext(UserContext);
+  const dispatch: any = useDispatch<any>();
   const navigate = useNavigate();
   const validate = (values: any) => {
     const errors: any = {};
@@ -57,8 +58,7 @@ export default function LogIn() {
         .then((response) => {
           if (response.data.status === 200) {
             showSuccess("Success", response.data.message);
-            setUser(response.data.data);
-            localStorage.setItem("user", JSON.stringify(response.data.data));
+            dispatch(loginSuccess(response.data.data));
             navigate("/cards-list");
           } else {
             showError("Error", response.data.message);

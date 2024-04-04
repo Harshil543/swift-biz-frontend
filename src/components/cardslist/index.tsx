@@ -1,14 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "../common/card";
 import Header from "../landing_component/header";
 import axios from "axios";
-import { UserContext } from "../context";
 import SkeletonC from "../common/skeleton";
+import { useSelector } from "react-redux";
 
 export default function CardList() {
   const [cardList, setCardList] = useState<any>([]);
-  const { user }: any = useContext(UserContext);
-  console.log(user);
+  const user = useSelector((state: any) => state.auth.user);
   const [isLoading, setIsloading] = useState(false);
 
   useEffect(() => {

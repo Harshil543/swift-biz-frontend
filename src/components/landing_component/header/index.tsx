@@ -1,15 +1,18 @@
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./index.module.scss";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "../../common/logo";
 import Button from "../../common/button";
-import { UserContext } from "../../context";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../../redux/Auth/authReducer";
 // import { Avatar } from "primereact/avatar";
 
 export default function Header({ isLanding }: any) {
   const [isSticky, setIsSticky] = useState(false);
   const navigate = useNavigate();
-  const { user, logOut }: any = useContext(UserContext);
+  const user = useSelector((state: any) => state.auth.user);
+  const dispatch = useDispatch<any>();
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.pageYOffset;
@@ -23,7 +26,7 @@ export default function Header({ isLanding }: any) {
   }, []);
 
   const Logout = () => {
-    logOut();
+    dispatch(logout());
     navigate("/");
   };
 
