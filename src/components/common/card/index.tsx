@@ -1,16 +1,21 @@
 import React from "react";
 
-export default function Card({ name, jobTitle, image }: any) {
+export default function Card({ onClick, name, jobTitle, image }: any) {
   const style = {
     background: "rgba(255, 255, 255, 0.53)",
     borderRadius: "16px",
     boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
     backdropFilter: "blur(19.2px)",
-    border: "1px solid rgba(255, 255, 255, 0.71)"
+    border: "1px solid rgba(255, 255, 255, 0.71)",
+    cursor: "pointer"
   };
 
   return (
-    <div style={style} className="flex flex-col rounded-lg md:flex-row">
+    <div
+      style={style}
+      className="flex flex-col rounded-lg md:flex-row"
+      onClick={onClick}
+    >
       <img
         className="w-full h-[128px] rounded-lg object-cover md:w-[224px] md:h-[128px] md:rounded-l-lg"
         src={`${image}`}

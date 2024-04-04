@@ -1,8 +1,0 @@
-# Node modules
-node_modules
-
-# Build directory
-build
-
-# Cache directories
-.cache

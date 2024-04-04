@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import Card from "../common/card";
 import Header from "../landing_component/header";
 import axios from "axios";
-import SkeletonC from "../common/skeleton";
+import { SkeletonC } from "../common/skeleton";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function CardList() {
   const [cardList, setCardList] = useState<any>([]);
   const user = useSelector((state: any) => state.auth.user);
   const [isLoading, setIsloading] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     setIsloading(true);
     axios
@@ -42,13 +43,16 @@ export default function CardList() {
             <SkeletonC />
           ) : (
             cardList.map((card: any) => (
-              <>
+              <div key={card.id}>
                 <Card
                   name={card.name}
                   image={card.image_url}
                   jobTitle={card.job_title}
+                  onClick={() => {
+                    navigate(`/cards-details/${card.id}`);
+                  }}
                 />
-              </>
+              </div>
             ))
           )}
         </div>
