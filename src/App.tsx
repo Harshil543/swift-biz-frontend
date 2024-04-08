@@ -3,8 +3,6 @@ import "./App.css";
 import LeadingPage from "./components/landing-page";
 import LogIn from "./components/login";
 import CardList from "./components/cardslist";
-import { useContext } from "react";
-// import { UserContext } from "./components/context";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import CardDetails from "./components/common/card-details";
 import "primeicons/primeicons.css";
@@ -45,7 +43,7 @@ function App() {
           }
         />
         <Route
-          path="/cards-details"
+          path="/cards-details/:id"
           element={
             <PrivateRoute>
               <CardDetails />
