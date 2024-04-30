@@ -13,6 +13,8 @@
     "@types/react-dom": "^18.2.22",
     "axios": "^1.6.8",
     "formik": "^2.4.5",
+    "json-2-csv": "^5.5.1",
+    "json-to-csv-export": "^2.1.1",
     "primeicons": "^7.0.0",
     "primereact": "^10.6.2",
     "react": "^18.2.0",

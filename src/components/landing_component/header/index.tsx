@@ -5,10 +5,12 @@ import Logo from "../../common/logo";
 import Button from "../../common/button";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../redux/Auth/authReducer";
-// import { Avatar } from "primereact/avatar";
+import { useLocation } from "react-router-dom";
+import { json2csv } from "json-2-csv";
 
-export default function Header({ isLanding }: any) {
+export default function Header({ isLanding, array, dataToConvert }: any) {
   const [isSticky, setIsSticky] = useState(false);
+  const location = useLocation();
   const navigate = useNavigate();
   const user = useSelector((state: any) => state.auth.user);
   const dispatch = useDispatch<any>();
@@ -97,7 +99,17 @@ export default function Header({ isLanding }: any) {
                   shape="circle"
                   size="large"
                 /> */}
+
                 <Button label="Log out" onClick={() => Logout()} />
+                {location.pathname === "/cards-list" && (
+                  <Button
+                    margin="m-4"
+                    label="Export to CSV"
+                    onClick={() => {
+                      json2csv(array);
+                    }}
+                  />
+                )}
               </div>
             )}
           </div>
