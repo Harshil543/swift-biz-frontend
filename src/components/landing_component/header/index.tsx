@@ -6,10 +6,19 @@ import Button from "../../common/button";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../redux/Auth/authReducer";
 import { useLocation } from "react-router-dom";
-import { json2csv } from "json-2-csv";
+import { exportCSVFile } from "../../../constant/functions";
 
-export default function Header({ isLanding, array, dataToConvert }: any) {
+export default function Header({
+  isLanding,
+  array,
+  isSelected,
+  setIsSelected,
+  setSelectedCards,
+  type
+}: any) {
+  console.log(type);
   const [isSticky, setIsSticky] = useState(false);
+  const [csvData, setCsvData] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
   const user = useSelector((state: any) => state.auth.user);
@@ -32,9 +41,42 @@ export default function Header({ isLanding, array, dataToConvert }: any) {
     navigate("/");
   };
 
+  const download = () => {
+    setCsvData([]);
+    setIsSelected(false);
+    const header = {
+      name: "name",
+      job_title: "job_title",
+      company: "company",
+      phone_number: "phone_number",
+      email: "email",
+      website: "website",
+      address: "address",
+      comment: "comment"
+    };
+    exportCSVFile(header, csvData, "cards");
+  };
+
+  useEffect(() => {
+    let itemsFormatted: any = [];
+    array?.forEach((item: any) => {
+      itemsFormatted?.push({
+        name: item.name, // remove commas to avoid errors,
+        job_title: item.job_title,
+        company: item.company,
+        phone_number: item.phone_number,
+        email: item.email,
+        website: item.website,
+        address: item.address.replace(/,/g, ""),
+        comment: item.comment
+      });
+    });
+    setCsvData(itemsFormatted);
+  }, [array]);
+
   return (
     <header>
-      <div className="px-4 mx-auto sm:px-6 lg:px-8 ">
+      <div className="px-4 mx-auto sm:px-6 lg:px-8">
         <div
           className={`z-[100] flex absolute w-[100%] right-0 items-center justify-between h-16 lg:h-20 ${
             isSticky ? styles.issticky : ""
@@ -91,25 +133,33 @@ export default function Header({ isLanding, array, dataToConvert }: any) {
             {!user?.id ? (
               <Button label="Log in" onClick={() => navigate("/login")} />
             ) : (
-              <div className="flex">
-                {/* <Avatar
-                  label="P"
-                  image={`/images/avatar/${user.image_url}`}
-                  className="bg-[#037cff] text-white m-4"
-                  shape="circle"
-                  size="large"
-                /> */}
-
-                <Button label="Log out" onClick={() => Logout()} />
+              <div
+                className={`flex justify-between ${
+                  type === "card-list" ? "w-[15rem]" : ""
+                }`}
+              >
                 {location.pathname === "/cards-list" && (
-                  <Button
-                    margin="m-4"
-                    label="Export to CSV"
-                    onClick={() => {
-                      json2csv(array);
-                    }}
-                  />
+                  <>
+                    <Button
+                      icon={<i className="pi pi-pen-to-square"></i>}
+                      label=""
+                      onClick={() => {
+                        setIsSelected(!isSelected);
+                        setCsvData([]);
+                        setSelectedCards([]);
+                      }}
+                    />
+                    <Button
+                      icon={<i className="pi pi-file-export"></i>}
+                      label=""
+                      onClick={() => {
+                        download();
+                      }}
+                      disabled={csvData.length === 0}
+                    />
+                  </>
                 )}
+                <Button label="Log out" onClick={() => Logout()} />
               </div>
             )}
           </div>

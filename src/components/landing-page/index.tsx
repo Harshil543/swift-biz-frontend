@@ -23,13 +23,6 @@ export default function LeadingPage() {
       <Hero />
       <Steps />
       <Section />
-      <Button
-        label={"Download CSV"}
-        onClick={() => {
-          debugger;
-          csvDownload(dataToConvert);
-        }}
-      ></Button>
       <Testimonial />
       <Blog />
       <Videos />

@@ -35,6 +35,7 @@ export default function CardDetails() {
         console.log(error);
       });
   }, [id, user]);
+
   return (
     <div
       style={{
