@@ -20,7 +20,7 @@ export default function CardList() {
     axios
       .request({
         method: "get",
-        url: `${process.env.REACT_APP_BASE_URL}/api/cards/${user.id}`,
+        url: `${process.env.REACT_APP_BASE_URL}api/cards/${user.id}`,
         headers: {
           Authorization: `Bearer ${user.accessToken}`
         }

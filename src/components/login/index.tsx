@@ -49,7 +49,7 @@ export default function LogIn() {
       axios
         .request({
           method: "post",
-          url: `${process.env.REACT_APP_BASE_URL}/api/v1/signin`,
+          url: `${process.env.REACT_APP_BASE_URL}api/v1/signin`,
           headers: {
             "Content-Type": "application/json"
           },

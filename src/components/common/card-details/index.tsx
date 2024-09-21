@@ -17,7 +17,7 @@ export default function CardDetails() {
     axios
       .request({
         method: "get",
-        url: `${process.env.REACT_APP_BASE_URL}/api/cards/${user.id}/${id}`,
+        url: `${process.env.REACT_APP_BASE_URL}api/cards/${user.id}/${id}`,
         headers: {
           Authorization: `Bearer ${user.accessToken}`
         }
