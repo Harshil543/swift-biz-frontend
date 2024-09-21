@@ -60,14 +60,16 @@ export default function LogIn() {
             showSuccess("Success", response.data.message);
             dispatch(loginSuccess(response.data.data));
             navigate("/cards-list");
+            formik.resetForm();
           } else {
             showError("Error", response.data.message);
           }
-          formik.resetForm();
           setLoading(false);
         })
         .catch((error) => {
-          console.log(error);
+          setLoading(false);
+          showError("Error", "Something went wrong!");
+          console.error(error);
         });
     }
   });
