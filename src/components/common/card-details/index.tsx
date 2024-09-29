@@ -41,14 +41,14 @@ export default function CardDetails() {
       style={{
         background: "linear-gradient(126.43deg,#eaf9fd 13.42%,#ebe0f9 105.9%)"
       }}
-      className="rounded-xl m-4 lg:h-[95vh]"
+      className="rounded-xl m-4"
     >
       <div className="ml-4">
         <div className="flex justify-center">
           <Logo height={130} />
         </div>
 
-        <div className="flex flex-col justify-start items-center sm:flex-row sm:justify-start sm:items-center">
+        <div className="flex flex-col justify-start items-center sm:justify-start sm:items-center">
           {isLoading ? (
             <ImageSkeleton />
           ) : (
@@ -58,32 +58,32 @@ export default function CardDetails() {
               alt="card details"
             />
           )}
-          <div className="flex p-10 justify-center lg:h-[70vh] items-start w-full sm:w-[50%] flex-col">
+          <div className="flex p-10 justify-center items-start w-full sm:w-[50%] flex-col">
             {isLoading ? (
               <HeadingSkeleton />
             ) : (
-              <h1 className="text-5xl font-bold mb-1 text-gray-800 text-center sm:text-left">
+              <h1 className="text-5xl font-bold text-gray-800 text-center sm:text-left">
                 {cardDetails?.name}
               </h1>
             )}
             {isLoading ? (
               <JobSkeleton />
             ) : (
-              <h2 className="text-2xl mb-10 text-gray-600 ml-1 sm:text-center">
+              <h2 className="text-2xl mb-1 text-gray-600 ml-1 sm:text-center">
                 {cardDetails?.job_title}
               </h2>
             )}
             {isLoading ? (
               <JobSkeleton />
             ) : (
-              <h2 className="text-xl mb-10 text-gray-600 text-center sm:text-left">
+              <h2 className="text-xl mb-1 text-gray-600 text-center sm:text-left">
                 <i className="pi pi-mobile"></i> {cardDetails?.phone_number}
               </h2>
             )}
             {isLoading ? (
               <JobSkeleton />
             ) : (
-              <h2 className="text-xl mb-10 text-gray-600 flex sm:text-left">
+              <h2 className="text-xl mb-1 text-gray-600 flex sm:text-left">
                 <i className="pi pi-address-book mt-2 mr-2"></i>
                 <div>{cardDetails?.address}</div>
               </h2>
@@ -92,7 +92,7 @@ export default function CardDetails() {
             {isLoading ? (
               <JobSkeleton />
             ) : (
-              <h2 className="text-xl mb-10 text-gray-600 text-center sm:text-left">
+              <h2 className="text-xl text-gray-600 text-center sm:text-left">
                 <i className="pi pi-envelope"></i> {cardDetails?.email}
               </h2>
             )}

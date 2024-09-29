@@ -12,15 +12,15 @@ export default function Card({ onClick, name, jobTitle, image }: any) {
     <>
       <div
         style={style}
-        className="flex flex-col rounded-lg md:flex-row"
+        className="flex flex-col rounded-lg"
         onClick={onClick}
       >
         <img
-          className="w-full h-[128px] rounded-lg object-cover md:w-[224px] md:h-[128px] md:rounded-l-lg"
+          className="w-full h-[310px] rounded-lg object-cover md:h-[310px] md:rounded-l-lg"
           src={`${image}`}
           alt=""
         />
-        <div className="flex flex-col justify-start p-4 md:p-6">
+        <div className="flex flex-col justify-start p-4  md:p-6">
           <h5 className="mb-2 text-lg md:text-xl font-medium">{name}</h5>
           <p className="text-xs md:text-sm text-surface/75 dark:text-grey-100">
             {jobTitle}
