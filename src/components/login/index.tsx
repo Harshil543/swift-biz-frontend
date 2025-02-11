@@ -59,7 +59,12 @@ export default function LogIn() {
           if (response.data.status === 200) {
             showSuccess("Success", response.data.message);
             dispatch(loginSuccess(response.data.data));
-            navigate("/cards-list");
+            if (response.data.data.role === "admin") {
+              debugger;
+              navigate("/admin-dashboard");
+            } else {
+              navigate("/cards-list");
+            }
             formik.resetForm();
           } else {
             showError("Error", response.data.message);

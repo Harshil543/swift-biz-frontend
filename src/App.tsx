@@ -7,11 +7,21 @@ import "primereact/resources/themes/lara-light-cyan/theme.css";
 import CardDetails from "./components/common/card-details";
 import "primeicons/primeicons.css";
 import { useSelector } from "react-redux";
+import AdminDashboard from "./components/admin-dashboard";
 
 function App() {
   function PrivateRoute({ children }: any) {
     const user = useSelector((state: any) => state.auth.user);
     return user?.id && user?.accessToken ? children : <Navigate to="/login" />;
+  }
+
+  function PrivateAdminRoute({ children }: any) {
+    const user = useSelector((state: any) => state.auth.user);
+    return user?.accessToken && user?.role === "admin" ? (
+      children
+    ) : (
+      <Navigate to="/login" />
+    );
   }
 
   function ProtectedRoute({ children }: any) {
@@ -40,6 +50,14 @@ function App() {
             <PrivateRoute>
               <CardList />
             </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin-dashboard"
+          element={
+            <PrivateAdminRoute>
+              <AdminDashboard />
+            </PrivateAdminRoute>
           }
         />
         <Route
