@@ -138,27 +138,28 @@ export default function Header({
                   type === "card-list" ? "w-[15rem]" : ""
                 }`}
               >
-                {location.pathname === "/cards-list" && (
-                  <>
-                    <Button
-                      icon={<i className="pi pi-pen-to-square"></i>}
-                      label=""
-                      onClick={() => {
-                        setIsSelected(!isSelected);
-                        setCsvData([]);
-                        setSelectedCards([]);
-                      }}
-                    />
-                    <Button
-                      icon={<i className="pi pi-file-export"></i>}
-                      label=""
-                      onClick={() => {
-                        download();
-                      }}
-                      disabled={csvData.length === 0}
-                    />
-                  </>
-                )}
+                {location.pathname === "/cards-list" ||
+                  (location.pathname === "/admin-dashboard" && (
+                    <>
+                      <Button
+                        icon={<i className="pi pi-pen-to-square"></i>}
+                        label=""
+                        onClick={() => {
+                          setIsSelected(!isSelected);
+                          setCsvData([]);
+                          setSelectedCards([]);
+                        }}
+                      />
+                      <Button
+                        icon={<i className="pi pi-file-export"></i>}
+                        label=""
+                        onClick={() => {
+                          download();
+                        }}
+                        disabled={csvData.length === 0}
+                      />
+                    </>
+                  ))}
                 <Button label="Log out" onClick={() => Logout()} />
               </div>
             )}

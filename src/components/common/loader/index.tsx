@@ -1,6 +1,7 @@
 import React from "react";
 import Lottie from "react-lottie";
 import animationData from "../../../constant/loader.json";
+const LottieC = Lottie as any;
 
 export default function Loader() {
   const defaultOptions = {
@@ -13,7 +14,7 @@ export default function Loader() {
   };
   return (
     <div>
-      <Lottie options={defaultOptions} height={25} width={100} />
+      <LottieC options={defaultOptions} height={25} width={100} />
     </div>
   );
 }

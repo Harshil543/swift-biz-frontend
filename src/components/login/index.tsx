@@ -63,6 +63,7 @@ export default function LogIn() {
               debugger;
               navigate("/admin-dashboard");
             } else {
+              debugger;
               navigate("/cards-list");
             }
             formik.resetForm();

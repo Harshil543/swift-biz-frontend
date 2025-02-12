@@ -17,10 +17,14 @@ export default function CardList() {
 
   useEffect(() => {
     setIsloading(true);
+    const url =
+      user.role === "admin"
+        ? `${process.env.REACT_APP_BASE_URL}api/admin-cards`
+        : `${process.env.REACT_APP_BASE_URL}api/cards/${user.id}`;
     axios
       .request({
         method: "get",
-        url: `${process.env.REACT_APP_BASE_URL}api/cards/${user.id}`,
+        url: url,
         headers: {
           Authorization: `Bearer ${user.accessToken}`
         }
@@ -68,6 +72,7 @@ export default function CardList() {
           setSelectedCards={setSelectedCards}
           type="card-list"
         />
+
         <div className="bg-[#f2f6f8]  p-10 py-[120px] sm:py-[150px] lg:py-[120px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {isLoading ? (
             <SkeletonC />
@@ -89,10 +94,12 @@ export default function CardList() {
                 )}
                 <Card
                   name={card.name}
-                  image={card.image_url}
+                  image={card?.image_urls && card?.image_urls[0]}
                   jobTitle={card.job_title}
                   onClick={() => {
-                    navigate(`/cards-details/${card.id}`);
+                    if (user.role !== "admin") {
+                      navigate(`/cards-details/${card.id}`);
+                    }
                   }}
                 />
               </div>
