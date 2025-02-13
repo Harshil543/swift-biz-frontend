@@ -150,15 +150,19 @@ export default function Header({
                           setSelectedCards([]);
                         }}
                       />
-                      <Button
-                        icon={<i className="pi pi-check-circle"></i>}
-                        label=""
-                        disabled={!isSelected}
-                        onClick={() => {
-                          setIsSelectedCardsAll(!isSelectedCardsAll);
-                          setSelectedCards(!isSelectedCardsAll ? [] : cardList);
-                        }}
-                      />
+                      {user.role === "admin" && (
+                        <Button
+                          icon={<i className="pi pi-check-circle"></i>}
+                          label=""
+                          disabled={!isSelected}
+                          onClick={() => {
+                            setIsSelectedCardsAll(!isSelectedCardsAll);
+                            setSelectedCards(
+                              !isSelectedCardsAll ? [] : cardList
+                            );
+                          }}
+                        />
+                      )}
                       <Button
                         icon={<i className="pi pi-file-export"></i>}
                         label=""
