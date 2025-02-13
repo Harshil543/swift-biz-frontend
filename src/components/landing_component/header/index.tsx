@@ -14,16 +14,16 @@ export default function Header({
   isSelected,
   setIsSelected,
   setSelectedCards,
-  type
+  type,
+  cardList
 }: any) {
-  console.log(type);
   const [isSticky, setIsSticky] = useState(false);
   const [csvData, setCsvData] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
   const user = useSelector((state: any) => state.auth.user);
   const dispatch = useDispatch<any>();
-
+  const [isSelectedCardsAll, setIsSelectedCardsAll] = useState(true);
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.pageYOffset;
@@ -61,7 +61,7 @@ export default function Header({
     let itemsFormatted: any = [];
     array?.forEach((item: any) => {
       itemsFormatted?.push({
-        name: item.name, // remove commas to avoid errors,
+        name: item.name,
         job_title: item.job_title,
         company: item.company,
         phone_number: item.phone_number,
@@ -79,7 +79,7 @@ export default function Header({
       <div className="px-4 mx-auto sm:px-6 lg:px-8">
         <div
           className={`z-[100] flex absolute w-[100%] right-0 items-center justify-between h-16 lg:h-20 ${
-            isSticky ? styles.issticky : ""
+            isSticky ? styles.isSticky : ""
           }`}
         >
           <div className="ml-10">
@@ -135,7 +135,7 @@ export default function Header({
             ) : (
               <div
                 className={`flex justify-between ${
-                  type === "card-list" ? "w-[15rem]" : ""
+                  type === "card-list" ? "w-[20rem]" : ""
                 }`}
               >
                 {location.pathname === "/cards-list" ||
@@ -148,6 +148,15 @@ export default function Header({
                           setIsSelected(!isSelected);
                           setCsvData([]);
                           setSelectedCards([]);
+                        }}
+                      />
+                      <Button
+                        icon={<i className="pi pi-check-circle"></i>}
+                        label=""
+                        disabled={!isSelected}
+                        onClick={() => {
+                          setIsSelectedCardsAll(!isSelectedCardsAll);
+                          setSelectedCards(!isSelectedCardsAll ? [] : cardList);
                         }}
                       />
                       <Button

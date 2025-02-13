@@ -10,13 +10,17 @@ import styles from "./index.module.scss";
 export default function CardList() {
   const [cardList, setCardList] = useState<any>([]);
   const user = useSelector((state: any) => state.auth.user);
-  const [isLoading, setIsloading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [selectedCards, setSelectedCards] = useState<any>([]);
   const [isSelected, setIsSelected] = useState<boolean>(false);
+  const [counts, setCounts] = useState({
+    totalCards: 0,
+    totalTasks: 0
+  });
 
   useEffect(() => {
-    setIsloading(true);
+    setIsLoading(true);
     const url =
       user.role === "admin"
         ? `${process.env.REACT_APP_BASE_URL}api/admin-cards`
@@ -32,30 +36,44 @@ export default function CardList() {
       .then((response) => {
         if (response.data.status === 200) {
           setCardList(response.data.data);
-        } else {
-          // showError("Error", response.data.message);
         }
-        setIsloading(false);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
       });
+    if (user.role === "admin") {
+      axios
+        .request({
+          method: "get",
+          url: `${process.env.REACT_APP_BASE_URL}api/total-counts`,
+          headers: {
+            Authorization: `Bearer ${user.accessToken}`
+          }
+        })
+        .then((response) => {
+          if (response.data.status === 200) {
+            setCounts(response.data.data);
+          }
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }, [user]);
 
   const onCategoryChange = (e: any) => {
     const value = e.value;
     const isChecked = e.checked;
 
-    // Check if the card is already in selectedCards
     const cardIndex = selectedCards.findIndex(
       (card: any) => card.id === value.id
     );
 
     if (isChecked && cardIndex === -1) {
-      // If checkbox is checked and card is not in selectedCards, add it
       setSelectedCards([...selectedCards, value]);
     } else if (!isChecked && cardIndex !== -1) {
-      // If checkbox is unchecked and card is in selectedCards, remove it
       const updatedSelectedCards = [...selectedCards];
       updatedSelectedCards.splice(cardIndex, 1);
       setSelectedCards(updatedSelectedCards);
@@ -68,12 +86,31 @@ export default function CardList() {
         <Header
           array={selectedCards}
           isSelected={isSelected}
+          cardList={cardList}
           setIsSelected={setIsSelected}
           setSelectedCards={setSelectedCards}
           type="card-list"
         />
 
-        <div className="bg-[#f2f6f8]  p-10 py-[120px] sm:py-[150px] lg:py-[120px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {user.role === "admin" && (
+          <div className="flex items-center gap-10 pt-[120px] sm:pt-[150px] lg:pt-[120px] px-10">
+            <div className="flex flex-col gap-2">
+              <div className="font-bold text-xl">Total Card</div>
+              <div className="font-semibold text-2xl">{counts.totalCards}</div>
+            </div>
+            <div className="flex flex-col gap-2">
+              <div className="font-bold text-xl">Total Task</div>
+              <div className="font-semibold text-2xl">{counts.totalTasks}</div>
+            </div>
+          </div>
+        )}
+        <div
+          className={`bg-[#f2f6f8]  p-10 ${
+            user.role !== "admin"
+              ? `py-[120px] sm:py-[150px] lg:py-[120px]`
+              : ``
+          } grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4`}
+        >
           {isLoading ? (
             <SkeletonC />
           ) : (
