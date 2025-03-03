@@ -12,11 +12,7 @@ import AdminDashboard from "./components/admin-dashboard";
 function App() {
   function PrivateRoute({ children }: any) {
     const user = useSelector((state: any) => state.auth.user);
-    return user?.id && user?.accessToken && user?.role === "user" ? (
-      children
-    ) : (
-      <Navigate to="/login" />
-    );
+    return user?.id && user?.accessToken ? children : <Navigate to="/login" />;
   }
 
   function PrivateAdminRoute({ children }: any) {
